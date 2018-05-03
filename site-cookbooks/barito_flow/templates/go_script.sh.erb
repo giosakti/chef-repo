@@ -1,0 +1,7 @@
+#!/bin/bash -
+export TZ=UTC
+
+[ -f "<%=@environment_file%>" ] && . "<%=@environment_file%>"
+
+binary_location=$(find /opt/<%=@app_name%> -type f -name <%=@binary_name%>)
+$binary_location <%=@init_command_arguement%>

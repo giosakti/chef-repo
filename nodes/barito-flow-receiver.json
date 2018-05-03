@@ -1,0 +1,3 @@
+{
+  "run_list":["barito_flow::default","barito_flow::receiver"]
+}
