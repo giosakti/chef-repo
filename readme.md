@@ -1,4 +1,4 @@
-# Chef Repo for Barito Flow
+# Chef Repo for Barito Log
 
 Infrastructure as a code.
 
