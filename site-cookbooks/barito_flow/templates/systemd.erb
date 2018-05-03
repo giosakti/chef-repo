@@ -6,7 +6,6 @@ Restart=on-failure
 RestartSec=2
 StartLimitInterval=50
 StartLimitBurst=10
-#Environment="BARITO_RECEIVER_ADDRESS=:8080" "BARITO_RECEIVER_KAFKA_BROKERS=10.2.218.145:9092" "BARITO_RECEIVER_PRODUCER_MAX_RETRY=10" "BARITO_RECEIVER_APPLICATION_SECRET=ABCDE1234"
 EnvironmentFile=<%=@environment_file%>
 ExecStart=<%=@go_script_location%>
 User=<%=@app_name%>

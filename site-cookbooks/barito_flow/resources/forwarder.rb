@@ -1,7 +1,7 @@
 app_name = node['app_name']
 binary_name = node['binary_name']
 environment_file = "/etc/default/#{app_name}.conf"
-barito_conf = node['barito']['receiver']
+barito_conf = node['barito']['forwarder']
 go_script_location ="/opt/barito_flow/#{app_name}.sh"
 
 
@@ -14,20 +14,20 @@ action :deploy do
     variables(
         app_name:                app_name,
         binary_name:             binary_name,
-        init_command_arguement:  'r',
+        init_command_arguement:  'f',
         environment_file:        environment_file
     )
   end
 
   template environment_file do
-    source 'barito_flow_receiver.conf.erb'
+    source 'barito_flow_forwarder.conf.erb'
     owner app_name
     group app_name
     variables(
-        barito_receiver_address:              barito_conf['address'],
-        barito_receiver_kafka_brokers:        barito_conf['kafka_brokers'],
-        barito_receiver_max_retry:            barito_conf['max_retry'],
-        barito_receiver_application_secret:   barito_conf['application_secret'],
+        barito_forwarder_kafka_brokers:        barito_conf['kafka_brokers'],
+        barito_forwarder_consumer_group_id:    barito_conf['consumer_group_id'],
+        barito_forwarder_consumer_topic:       barito_conf['consumer_topic'],
+        barito_forwarder_elasticsearch_url:    barito_conf['elasticsearch_url'],
     )
 
     notifies :restart, "service[#{app_name}]", :delayed
