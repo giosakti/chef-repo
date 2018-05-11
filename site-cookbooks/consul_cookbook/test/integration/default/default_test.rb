@@ -30,3 +30,16 @@ end
 describe file('/opt/bin/consul') do
   its('mode') { should cmp '0755' }
 end
+
+describe directory('/var/opt/consul') do
+  its('mode') { should cmp '0755' }
+end
+
+describe directory('/opt/consul/etc') do
+  its('mode') { should cmp '0755' }
+end
+
+describe file('/opt/consul/etc/consul.json') do
+  its('mode') { should cmp '0640' }
+end
+
